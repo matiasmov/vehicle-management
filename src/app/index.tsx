@@ -1,7 +1,24 @@
 import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 export default function Login() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  function handleSignUp(){
+
+  }
+
+
+
+
+
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -17,6 +34,8 @@ export default function Login() {
           <TextInput
             placeholder="Digite seu email..."
             style={styles.input}
+            value={email}
+            onChangeText={setEmail}
           />
         </View>
 
@@ -26,10 +45,12 @@ export default function Login() {
             placeholder="Digite sua senha..."
             style={styles.input}
             secureTextEntry
+            value={password}
+            onChangeText={setPassword}
           />
         </View>
 
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>Acessar</Text>
         </Pressable>
 
