@@ -2,21 +2,20 @@ import Colors from '@/constants/Colors';
 import { Link } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+
 export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  function handleSignUp(){
+  function handleSignIn(){
+
+    setLoading(true);
+    
+
 
   }
-
-
-
-
-
-
 
 
   return (
@@ -50,7 +49,7 @@ export default function Login() {
           />
         </View>
 
-        <Pressable style={styles.button} onPress={handleSignUp}>
+        <Pressable style={styles.button} onPress={handleSignIn}>
           <Text style={styles.buttonText}>Acessar</Text>
         </Pressable>
 
