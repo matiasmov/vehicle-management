@@ -20,7 +20,12 @@ const [loading, setLoading] = useState(false);
 
         const {data, error} = await supabase.auth.signUp({
           email: email,
-          password: password
+          password: password,
+          options:{
+            data:{
+              name: name
+            }
+          }
         })
 
         if (error){
@@ -97,6 +102,7 @@ const [loading, setLoading] = useState(false);
 
         <Pressable style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>Cadastrar</Text>
+          {loading ? "Carregando..." : "Cadastrar"}
         </Pressable>
 
       </View>
