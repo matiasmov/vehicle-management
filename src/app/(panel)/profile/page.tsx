@@ -1,11 +1,32 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { useAuth } from '@/src/contexts/AuthContext';
+import { supabase } from '@/src/lib/supabase';
+import { Alert, Button, StyleSheet, Text, View } from 'react-native';
 
 export default function Profile() {
+    const { setAuth } = useAuth();
+    
+    async function handleSignout(){
+        const { error } = await supabase.auth.signOut();
+        setAuth(null)
+        
+    if(error){
+        Alert.alert('Error', 'Erro ao sair da conta!')
+    }
+    }
+    
+    
+    
     return (
         <View style ={styles.container}> 
 
-            <Text> pagina Perfil</Text>
+            <Text> 
+                pagina Perfil
+            </Text>
 
+        <Button
+            title='Sair'
+            onPress={handleSignout}
+        />
         </View>
     );
 }

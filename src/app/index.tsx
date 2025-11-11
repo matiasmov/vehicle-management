@@ -1,7 +1,8 @@
 import Colors from '@/constants/Colors';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { supabase } from '../lib/supabase';
 
 export default function Login() {
 
@@ -9,9 +10,23 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  function handleSignIn(){
+  async function handleSignIn(){
 
     setLoading(true);
+
+    const {data, error} = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    })
+
+    if(error){
+      Alert.alert('Error', error.message)
+      setLoading (false)
+      return;
+    }
+
+    setLoading(false);
+    router.replace('/(panel)/profile/page')
     
 
 
@@ -24,7 +39,7 @@ export default function Login() {
         <Text style={styles.logoText}>
           Gerenciamento Veicular<Text style={{ color: Colors.green }}>App</Text>
         </Text>
-        <Text style={styles.slogan}>Adminstre seus veículos em um lugar só!</Text>
+        <Text style={styles.slogan}>Administre seus veículos em um lugar só!</Text>
       </View>
 
       <View style={styles.form}>
@@ -50,12 +65,14 @@ export default function Login() {
         </View>
 
         <Pressable style={styles.button} onPress={handleSignIn}>
-          <Text style={styles.buttonText}>Acessar</Text>
+          <Text style={styles.buttonText}>
+            {loading ? 'Carregando...' : 'Acessar'}
+          </Text>
         </Pressable>
 
-        <Link href='/(auth)/signup/page' style={styles.link}>
+        <Link href='/(auth)/signup/page' style={styles.link} asChild>
         <Text> Ainda não possui uma conta? Cadastre-se</Text>
-        
+         
         </Link>
       </View>
     </View>
