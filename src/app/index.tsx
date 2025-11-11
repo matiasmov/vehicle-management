@@ -3,6 +3,10 @@ import { Link, router } from 'expo-router';
 import { useState } from 'react';
 import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { supabase } from '../lib/supabase';
+<<<<<<< HEAD
+=======
+import { router } from 'expo-router';
+>>>>>>> ef39ab72fe5950abe91db9bd65398055ed700dbd
 
 export default function Login() {
 
@@ -19,6 +23,7 @@ export default function Login() {
       password: password
     })
 
+<<<<<<< HEAD
     if(error){
       Alert.alert('Error', error.message)
       setLoading (false)
@@ -27,7 +32,16 @@ export default function Login() {
 
     setLoading(false);
     router.replace('/(panel)/profile/page')
+=======
+    if (error){
+      Alert.alert('Error', error.message)
+      setLoading(false);
+        return;
+    } 
+>>>>>>> ef39ab72fe5950abe91db9bd65398055ed700dbd
     
+    setLoading(false);
+    router.replace('/(panel)/profile/page')
 
 
   }
@@ -66,7 +80,11 @@ export default function Login() {
 
         <Pressable style={styles.button} onPress={handleSignIn}>
           <Text style={styles.buttonText}>
+<<<<<<< HEAD
             {loading ? 'Carregando...' : 'Acessar'}
+=======
+            {loading ? 'carregando...' : 'Acessar'}
+>>>>>>> ef39ab72fe5950abe91db9bd65398055ed700dbd
           </Text>
         </Pressable>
 
