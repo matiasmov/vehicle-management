@@ -31,11 +31,12 @@ const [loading, setLoading] = useState(false);
 
         if (error){
           Alert.alert('Error', error.message)
+          setLoading(false)
           return;
         }
 
         setLoading(false);
-        router.replace('/')
+        router.replace('/(auth)/signin/page')
 
 
     }
@@ -103,16 +104,9 @@ const [loading, setLoading] = useState(false);
 
         <Pressable style={styles.button} onPress={handleSignUp}>
           <Text style={styles.buttonText}>
-<<<<<<< HEAD
-            {loading ? 'Carregando...' : 'Cadastrar'}
-          </Text>
-          
-          
-=======
 
           {loading ? "Carregando..." : "Cadastrar"}
           </Text>
->>>>>>> ef39ab72fe5950abe91db9bd65398055ed700dbd
         </Pressable>
 
       </View>
