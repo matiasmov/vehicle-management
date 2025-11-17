@@ -1,5 +1,5 @@
-import { ActivityIndicator, Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import Colors from '@/constants/Colors';
+import Colors from '@/src/constants/Colors';
+import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 
 export default function Index() {

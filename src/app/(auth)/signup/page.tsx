@@ -1,4 +1,4 @@
-import Colors from '@/constants/Colors';
+import Colors from '@/src/constants/Colors';
 import { supabase } from '@/src/lib/supabase';
 import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
